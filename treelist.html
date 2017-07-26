@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="target-densitydpi=320,width=768,user-scalable=no" />
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="js/mobiscroll.min.js"></script>
+        <link rel="stylesheet" href="css/mobiscroll.min.css" />
+    </head>
+    <style>
+input {
+    width: 200px;
+    height: 200px;
+    background: #f00;
+}
+    </style>
+    <body>
+        <ul id="current-area-list" style="display: none;position:relative">  
+            <li>
+                <div data-value="2">北京</div>  
+                <ul>  
+                    <li data-value="36">
+                        <div>1111</div>
+                        <ul>
+                            <li>
+                                <div>111</div>
+                                <ul>
+                                    <li>aaaa</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>  
+                    <li data-value="37">
+                        <div>2222</div>
+                        <ul>
+                            <li>111</li>
+                        </ul>
+                    </li>  
+                    <li data-value="53">3333</li>  
+                </ul>  
+            </li>  
+            <li>
+                <div data-value="3">222</div>  
+                <ul>  
+                    <li data-value="54">111</li>  
+                </ul>  
+            </li>  
+        </ul>
+        <script>
+var that = this;  
+$("#current-area-list").mobiscroll().treelist({  
+    theme: "android-ics",  
+    lang: "zh",  
+    display: 'bottom',  
+    inputClass: 'tmp',  
+    onSelect: function (valueText, inst) {  
+        console.log(valueText);  
+        var n = valueText.split(' ');  
+        var m1 = $(this).children("li").eq(n[0]).find("div").html();  
+        var m2 = $(this).children("li").eq(n[0]).find("li").eq(n[1]).find("div").html();  
+        var m3 = $(this).children("li").eq(n[0]).find("li").eq(n[1]).find("li").eq(n[2]).find("div").html();  
+        var m4 = $(this).children("li").eq(n[0]).find("li").eq(n[1]).find("li").eq(n[2]).find("li").eq(n[3]).html();  
+        var m1_id = $(this).children("li").eq(n[0]).find("div").attr("data-value");  
+        var m2_id = $(this).children("li").eq(n[0]).find("li").eq(n[1]).attr("data-value");  
+        console.log(m1);  
+        console.log(m2);  
+        console.log(m3);  
+        console.log(m4);  
+        console.log(m1_id);  
+        console.log(m2_id);  
+    }  
+});  
+//$("input[id^=current-area-list]").focus();  
+        </script>
+    </body>
+</html>
