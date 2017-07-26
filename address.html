@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>地址</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="target-densitydpi=320,width=768,user-scalable=no" />
+        <!--等比例缩放-->
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="js/mobiscroll.min.js"></script>
+        <link rel="stylesheet" href="css/mobiscroll.min.css" />
+        <style>
+.chooseaddr {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    margin-top: 20px;
+        padding: 0 30px;
+}
+.chooseaddr a {
+    height: 150px;
+    font-size: 24px;
+    line-height: 30px;
+    padding-top: 7px;
+    color: rgb(76, 76, 76);
+}
+.chooseaddr input#select_dummy {
+    height: 0;
+    width: 0;
+}
+.chooseaddr p,.choosedetail p {
+    clear: both;
+    margin: 7px 0;
+}
+.chooseaddr p.phone i,.choosedetail li p.phone i {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.chooseaddr p.address i,.choosedetail li p.address i {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.choosedetail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+    width: 100%;
+    height: 100%;
+}
+.choosedetail {
+    display: none;
+}
+.choosedetail .box {
+    width: 460px;
+    height: 360px;
+    background-color: #fff;
+    border-radius: 9px;
+    left: 50%;
+    top: 50%;
+    margin-left: -260px;
+    margin-top: -180px;
+    overflow: scroll;
+    padding: 0 30px;
+        position: absolute;
+}
+.choosedetail li {
+    padding: 20px 0;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+}
+.choosedetail li.own p {
+    color: rgb(201, 166, 14);
+    word-wrap: break-word;
+}
+.content {
+    position: relative;
+}
+.db {
+    display: block;
+}
+.oh {
+    overflow: hidden;
+}
+.fl {
+    float: left;
+}
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <div class="chooseaddr">
+                <a class="db oh">
+                    <span class="db oh">
+                        选择
+                    </span>
+                    <select id="select">
+                        <optgroup label="省1">
+                            <option value="11">省1市1</option>
+                            <option value="12">省1市2</option>
+                        </optgroup>
+                        <optgroup label="省2">
+                            <option value="21">省2市1</option>
+                            <option value="22">省2市2</option>
+                        </optgroup>
+                        <optgroup label="省3">
+                            <option value="31">省3市1</option>
+                            <option value="32">省3市2</option>
+                        </optgroup>
+                    </select>
+                </a>
+            </div>
+            <div class="choosedetail">
+                <div class="box oh">
+                    <ul class="oh">
+                        <li class="own oh">
+                            区
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+
+$("optgroup").eq(0).append('<option value="2e">qwef</option>');
+$(function () {
+    $('#select').mobiscroll().select({
+        theme: 'android-ics',
+        display: 'modal',
+        setText:'确定',
+        cancelText:'取消',
+        label: 'City',
+        group: true,
+        onSelect:function(text,inst){
+            alert(text);
+            alert($(this).mobiscroll('getValue'));
+            $(".choosedetail").show();
+        },
+    });
+});
+$(".chooseaddr").click(function(){$("#select").focus()});
+$(".choosedetail li").click(function(){
+    $(".choosedetail").hide();
+});
+        </script>
+    </body>
+</html>
