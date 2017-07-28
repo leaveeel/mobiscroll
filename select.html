@@ -1,12 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>地址</title>
-        <meta name="keywords" content="" />
-        <meta name="description" content="" />
-        <meta name="viewport" content="target-densitydpi=320,width=768,user-scalable=no" />
-        <!--等比例缩放-->
+        <meta charset="utf-8" />
         <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="js/mobiscroll.min.js"></script>
         <link rel="stylesheet" href="css/mobiscroll.min.css" />
@@ -15,7 +10,7 @@
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
     margin-top: 20px;
-        padding: 0 30px;
+    padding: 0 30px;
 }
 .chooseaddr a {
     height: 150px;
@@ -27,20 +22,7 @@
 .chooseaddr input#select_dummy {
     height: 0;
     width: 0;
-}
-.chooseaddr p,.choosedetail p {
-    clear: both;
-    margin: 7px 0;
-}
-.chooseaddr p.phone i,.choosedetail li p.phone i {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-.chooseaddr p.address i,.choosedetail li p.address i {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+    border: none;
 }
 .choosedetail {
     position: fixed;
@@ -64,16 +46,12 @@
     margin-top: -180px;
     overflow: scroll;
     padding: 0 30px;
-        position: absolute;
+    position: absolute;
 }
 .choosedetail li {
     padding: 20px 0;
     border-bottom: 1px solid #000;
     cursor: pointer;
-}
-.choosedetail li.own p {
-    color: rgb(201, 166, 14);
-    word-wrap: break-word;
 }
 .content {
     position: relative;
@@ -93,9 +71,7 @@
         <div class="content">
             <div class="chooseaddr">
                 <a class="db oh">
-                    <span class="db oh">
-                        选择
-                    </span>
+                    <span class="db oh">选择</span>
                     <select id="select">
                         <optgroup label="省1">
                             <option value="11">省1市1</option>
@@ -115,16 +91,13 @@
             <div class="choosedetail">
                 <div class="box oh">
                     <ul class="oh">
-                        <li class="own oh">
-                            区
-                        </li>
+                        <li class="oh">区1</li>
                     </ul>
                 </div>
             </div>
         </div>
         <script>
-
-$("optgroup").eq(0).append('<option value="2e">qwef</option>');
+$("optgroup").eq(0).append('<option value="qwef">qwef</option>');
 $(function () {
     $('#select').mobiscroll().select({
         theme: 'android-ics',
@@ -142,6 +115,7 @@ $(function () {
 });
 $(".chooseaddr").click(function(){$("#select").focus()});
 $(".choosedetail li").click(function(){
+    $(".chooseaddr span").html($(this).html());
     $(".choosedetail").hide();
 });
         </script>
